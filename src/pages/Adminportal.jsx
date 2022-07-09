@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import user from "../assets/user.png";
+import building from "../assets/building.png";
 
 const Adminportal = () => {
   return (
@@ -44,7 +46,7 @@ const Adminportal = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex mt-10 items-center px-6 py-4 text-base font-normal text-white bg-[#565656] rounded-lg "
+                    className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-10 items-center px-6 py-4 text-base font-normal text-white bg-[#565656] rounded-lg "
                   >
                     <svg
                       width="24"
@@ -66,7 +68,7 @@ const Adminportal = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
+                    className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
                   >
                     <svg
                       width="24"
@@ -97,7 +99,7 @@ const Adminportal = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
+                    className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
                   >
                     <svg
                       width="24"
@@ -130,7 +132,7 @@ const Adminportal = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
+                    className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
                   >
                     <svg
                       width="24"
@@ -153,7 +155,7 @@ const Adminportal = () => {
                 <li>
                   <a
                     href="#"
-                    className="flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
+                    className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
                   >
                     <svg
                       width="24"
@@ -185,20 +187,18 @@ const Adminportal = () => {
               </ul>
               <div>
                 <ul>
-                  <li className="py-8 mt-64 bg-[#565656] text-center text-white">
+                  <li className="relative flex py-6 mt-64 bg-[#565656] text-center text-white">
                     <a
                       href="/"
                       aria-label="Author"
                       title="Author"
                       className="mr-3"
                     >
-                      <img
-                        src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                        alt="avatar"
-                        className="object-cover rounded-full shadow-sm"
-                      />
+                      <div>
+                        <img className="pl-16 m-auto" src={user} alt="" />{" "}
+                      </div>
                     </a>
-                    <p>Rizqi Hidayat</p>
+                    <p className="m-auto ml-1">Rizqi Hidayat</p>
                   </li>
                 </ul>
               </div>
@@ -327,142 +327,108 @@ const Adminportal = () => {
                     </div>
                   </div>
                 </section>
-                <table>
-                  <tbody className="">
+                <table className="w-full border border-slate-500">
+                  <tbody>
                     <tr>
-                      <th>Company</th>
-                      <th>Contact</th>
-                      <th>Country</th>
-                      <th>Country</th>
-                      <th>Country</th>
+                      <th
+                        colSpan={5}
+                        className="text-left pl-10 py-3 text-white bg-[#565656] border border-black"
+                      >
+                        Pending Order
+                      </th>
                     </tr>
                     <tr>
-                      <td>Alfreds Futterkiste</td>
-                      <td>Maria Anders</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
+                      <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                        Building
+                      </th>
+                      <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                        User
+                      </th>
+                      <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                        Details
+                      </th>
+                      <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                        Inbox
+                      </th>
+                      <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                        Manage
+                      </th>
                     </tr>
                     <tr>
-                      <td>Centro comercial Moctezuma</td>
-                      <td>Francisco Chang</td>
-                      <td>Mexico</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
-                    </tr>
-                    <tr>
-                      <td>Ernst Handel</td>
-                      <td>Roland Mendel</td>
-                      <td>Austria</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
-                    </tr>
-                    <tr>
-                      <td>Island Trading</td>
-                      <td>Helen Bennett</td>
-                      <td>UK</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
-                    </tr>
-                    <tr>
-                      <td>Laughing Bacchus Winecellars</td>
-                      <td>Yoshi Tannamuri</td>
-                      <td>Canada</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
-                    </tr>
-                    <tr>
-                      <td>Magazzini Alimentari Riuniti</td>
-                      <td>Giovanni Rovelli</td>
-                      <td>Italy</td>
-                      <td>Germany</td>
-                      <td>Germany</td>
+                      <td className="p-2 border border-black">
+                        <div className="flex items-start">
+                          <div>
+                            <img className="m-auto" src={building} alt="" />{" "}
+                          </div>
+                          <div className="p-1">
+                            <h1 className="font-semibold">Equity Tower</h1>
+                            <p>SCBD, Jakarta Selatan</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-2 border border-black">
+                        <div className="flex">
+                          <div>
+                            <img className="m-auto" src={user} alt="" />{" "}
+                          </div>
+                          <div className="p-1">
+                            <h1 className="font-semibold">Fatih Safaat</h1>
+                            <p>fatihsafat@gmail.com</p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="p-2 border border-black w-56">
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Booking ID</p>
+                          <p className="text-right">01</p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Phone</p>
+                          <p className="text-right">081299094828</p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Floor</p>
+                          <p className="text-right">48th</p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Type</p>
+                          <p className="text-right">Serviced Office</p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Participant</p>
+                          <p className="text-right">8 People</p>
+                        </div>
+                        <div className="flex justify-between">
+                          <p className="font-semibold">Date Book</p>
+                          <p className="text-right">20 juni 2022</p>
+                        </div>
+                      </td>
+                      <td className="p-2 border border-black text-center ">
+                        <button
+                          type="button"
+                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Message
+                        </button>
+                      </td>
+                      <td className="p-2 border border-black text-center w-56">
+                        <button
+                          type="button"
+                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                        >
+                          Add Order
+                        </button>
+                        &nbsp;
+                        <button
+                          type="button"
+                          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                        >
+                          Cancel
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
-
-                {/* <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                  <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                      <tr>
-                        <th scope="col" className="px-6 py-3">
-                          Building
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          User
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Details
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Inbox
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                          Manage
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th
-                          scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                        >
-                          Equity Tower
-                        </th>
-                        <td className="px-6 py-4">Rizqihidayat@gmail.com</td>
-                        <td className="px-6 py-4">Laptop</td>
-                        <td className="px-6 py-4">$2999</td>
-                        <td className="px-6 py-4 text-right">
-                          <a
-                            href="#"
-                            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                        <th
-                          scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                        >
-                          Microsoft Surface Pro
-                        </th>
-                        <td className="px-6 py-4">White</td>
-                        <td className="px-6 py-4">Laptop PC</td>
-                        <td className="px-6 py-4">$1999</td>
-                        <td className="px-6 py-4 text-right">
-                          <a
-                            href="#"
-                            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr className="bg-white dark:bg-gray-800">
-                        <th
-                          scope="row"
-                          className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                        >
-                          Magic Mouse 2
-                        </th>
-                        <td className="px-6 py-4">Black</td>
-                        <td className="px-6 py-4">Accessories</td>
-                        <td className="px-6 py-4">$99</td>
-                        <td className="px-6 py-4 text-right">
-                          <a
-                            href="#"
-                            className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div> */}
               </div>
             </div>
           </main>
