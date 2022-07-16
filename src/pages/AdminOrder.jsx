@@ -1,9 +1,36 @@
-import React from "react";
+
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+
 
 const AdminOrder = () => {
+
+  const [data, setData] = useState([]);
+  const [error, setError] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending", {
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk"
+          }
+        }
+      )
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    }, []);
+    
+    console.log("data",data)
+
   return (
     <div>
       <div>
@@ -225,6 +252,7 @@ const AdminOrder = () => {
                         Order Details
                       </th>
                     </tr>
+              
                     <tr>
                       <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
                         Building
@@ -242,6 +270,7 @@ const AdminOrder = () => {
                         Manage
                       </th>
                     </tr>
+                  {data?.map((admin) => (            
                     <tr>
                       <td className="p-2 border border-black">
                         <div className="flex items-start">
@@ -249,8 +278,8 @@ const AdminOrder = () => {
                             <img className="m-auto" src={building} alt="" />{" "}
                           </div>
                           <div className="p-1">
-                            <h1 className="font-semibold">Equity Tower</h1>
-                            <p>SCBD, Jakarta Selatan</p>
+                            <h1 className="font-semibold">{admin.building.name}</h1>
+                            <p>{admin.building.complex.complex_name}</p>
                           </div>
                         </div>
                       </td>
@@ -260,116 +289,35 @@ const AdminOrder = () => {
                             <img className="m-auto" src={user} alt="" />{" "}
                           </div>
                           <div className="p-1">
-                            <h1 className="font-semibold">Fatih Safaat</h1>
-                            <p>fatihsafat@gmail.com</p>
+                            <h1 className="font-semibold">{admin.user.first_name}</h1>
+                            <p>{admin.user.email}</p>
                           </div>
                         </div>
                       </td>
                       <td className="p-2 border border-black w-56">
                         <div className="flex justify-between">
                           <p className="font-semibold">Booking ID</p>
-                          <p className="text-right">01</p>
+                          <p className="text-right">{admin.id}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Phone</p>
-                          <p className="text-right">081299094828</p>
+                          <p className="text-right">{admin.user.phone}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Floor</p>
-                          <p className="text-right">48th</p>
+                          <p className="text-right">{admin.floor.name}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Type</p>
-                          <p className="text-right">Serviced Office</p>
+                          <p className="text-right">{admin.floor.type}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Participant</p>
-                          <p className="text-right">8 People</p>
+                          <p className="text-right">{admin.participant}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Date Book</p>
-                          <p className="text-right">20 juni 2022</p>
-                        </div>
-                      </td>
-                      <td className="p-2 border border-black text-center ">
-                        <button
-                          type="button"
-                          class="m-auto text-white bg-[#FBCD0A] hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
-                        >
-                          Order Inactive
-                        </button>
-                      </td>
-                      <td className="p-2 border border-black text-center w-56">
-                        <button
-                          type="button"
-                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        >
-                          Details
-                        </button>
-                        &nbsp;
-                        <button
-                          type="button"
-                          class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                          Massage
-                        </button>
-                        <div className="pt-4">
-                          <button
-                            type="button"
-                            class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                          >
-                            View Payment
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="p-2 border border-black">
-                        <div className="flex items-start">
-                          <div>
-                            <img className="m-auto" src={building} alt="" />{" "}
-                          </div>
-                          <div className="p-1">
-                            <h1 className="font-semibold">Equity Tower</h1>
-                            <p>SCBD, Jakarta Selatan</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-2 border border-black">
-                        <div className="flex">
-                          <div>
-                            <img className="m-auto" src={user} alt="" />{" "}
-                          </div>
-                          <div className="p-1">
-                            <h1 className="font-semibold">Fatih Safaat</h1>
-                            <p>fatihsafat@gmail.com</p>
-                          </div>
-                        </div>
-                      </td>
-                      <td className="p-2 border border-black w-56">
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Booking ID</p>
-                          <p className="text-right">01</p>
-                        </div>
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Phone</p>
-                          <p className="text-right">081299094828</p>
-                        </div>
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Floor</p>
-                          <p className="text-right">48th</p>
-                        </div>
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Type</p>
-                          <p className="text-right">Serviced Office</p>
-                        </div>
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Participant</p>
-                          <p className="text-right">8 People</p>
-                        </div>
-                        <div className="flex justify-between">
-                          <p className="font-semibold">Date Book</p>
-                          <p className="text-right">20 juni 2022</p>
+                          <p className="text-right">{admin.start_reservation}</p>
                         </div>
                       </td>
                       <td className="p-2 border border-black text-center">
@@ -404,6 +352,8 @@ const AdminOrder = () => {
                         </div>
                       </td>
                     </tr>
+))}
+
                   </tbody>
                 </table>
               </div>
