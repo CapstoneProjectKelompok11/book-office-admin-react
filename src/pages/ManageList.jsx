@@ -69,7 +69,188 @@ const ManageList = () => {
         </nav>
         <div className="flex">
           <LeftBar />
-          <main className="flex-1 ml-80"></main>
+          <main className="flex-1 ml-80">
+            <div className="px-10 pb-3">
+              <div>
+                <section className="text-gray-600 body-font">
+                  <div className="container px-10 py-10 mx-auto"></div>
+                </section>
+                <div className="grid grid-cols-2 py-3 text-white bg-[#565656]">
+                  <div className="text-left pl-10 my-auto w-full">
+                    <p className="font-bold">Order Details</p>
+                  </div>
+                  <div className="my-auto ml-auto mr-6">
+                    <div className="rounded-lg bg-[#4D89FF] w-fit flex py-2">
+                      <div className="ml-3">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M12 3C16.95 3 21 7.05 21 12C21 16.95 16.95 21 12 21C7.05 21 3 16.95 3 12C3 7.05 7.05 3 12 3ZM12 1.5C6.225 1.5 1.5 6.225 1.5 12C1.5 17.775 6.225 22.5 12 22.5C17.775 22.5 22.5 17.775 22.5 12C22.5 6.225 17.775 1.5 12 1.5Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M18 11.25H12.75V6H11.25V11.25H6V12.75H11.25V18H12.75V12.75H18V11.25Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-base font-medium mx-3">
+                        Add New Listing
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-5 text-white bg-[#565656] ">
+                  <div className="grid grid-cols-2 border-black border py-2 ">
+                    <div className="font-medium w-full ml-6">
+                      <p>Jakarta Pusat</p>
+                    </div>
+                    <div className="w-fit ml-auto mr-6">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8708 16.71L3.67676 8.487C2.82776 7.5195 3.51776 6 4.80626 6H19.1943C19.4826 5.99975 19.765 6.08263 20.0074 6.23871C20.2499 6.39479 20.4423 6.61746 20.5614 6.88004C20.6806 7.14262 20.7216 7.434 20.6794 7.71927C20.6373 8.00454 20.5138 8.27161 20.3238 8.4885L13.1298 16.7085C12.989 16.8696 12.8153 16.9987 12.6205 17.0872C12.4257 17.1757 12.2142 17.2215 12.0003 17.2215C11.7863 17.2215 11.5748 17.1757 11.38 17.0872C11.1852 16.9987 11.0116 16.8696 10.8708 16.7085V16.71Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 border-black border py-2 ">
+                    <div className="font-medium w-full ml-6">
+                      <p>Jakarta Utara</p>
+                    </div>
+                    <div className="w-fit ml-auto mr-6">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8708 16.71L3.67676 8.487C2.82776 7.5195 3.51776 6 4.80626 6H19.1943C19.4826 5.99975 19.765 6.08263 20.0074 6.23871C20.2499 6.39479 20.4423 6.61746 20.5614 6.88004C20.6806 7.14262 20.7216 7.434 20.6794 7.71927C20.6373 8.00454 20.5138 8.27161 20.3238 8.4885L13.1298 16.7085C12.989 16.8696 12.8153 16.9987 12.6205 17.0872C12.4257 17.1757 12.2142 17.2215 12.0003 17.2215C11.7863 17.2215 11.5748 17.1757 11.38 17.0872C11.1852 16.9987 11.0116 16.8696 10.8708 16.7085V16.71Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 border-black border py-2 w-full">
+                    <div className="font-medium w-full ml-6">
+                      <p>Jakarta Selatan</p>
+                    </div>
+                    <div className="w-fit ml-auto mr-6">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8708 16.71L3.67676 8.487C2.82776 7.5195 3.51776 6 4.80626 6H19.1943C19.4826 5.99975 19.765 6.08263 20.0074 6.23871C20.2499 6.39479 20.4423 6.61746 20.5614 6.88004C20.6806 7.14262 20.7216 7.434 20.6794 7.71927C20.6373 8.00454 20.5138 8.27161 20.3238 8.4885L13.1298 16.7085C12.989 16.8696 12.8153 16.9987 12.6205 17.0872C12.4257 17.1757 12.2142 17.2215 12.0003 17.2215C11.7863 17.2215 11.5748 17.1757 11.38 17.0872C11.1852 16.9987 11.0116 16.8696 10.8708 16.7085V16.71Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 border-black border py-2 ">
+                    <div className="font-medium w-full ml-6">
+                      <p>Jakarta Barat</p>
+                    </div>
+                    <div className="w-fit ml-auto mr-6">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8708 16.71L3.67676 8.487C2.82776 7.5195 3.51776 6 4.80626 6H19.1943C19.4826 5.99975 19.765 6.08263 20.0074 6.23871C20.2499 6.39479 20.4423 6.61746 20.5614 6.88004C20.6806 7.14262 20.7216 7.434 20.6794 7.71927C20.6373 8.00454 20.5138 8.27161 20.3238 8.4885L13.1298 16.7085C12.989 16.8696 12.8153 16.9987 12.6205 17.0872C12.4257 17.1757 12.2142 17.2215 12.0003 17.2215C11.7863 17.2215 11.5748 17.1757 11.38 17.0872C11.1852 16.9987 11.0116 16.8696 10.8708 16.7085V16.71Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 border-black border py-2 ">
+                    <div className="font-medium w-full ml-6">
+                      <p>Jakarta Timur</p>
+                    </div>
+                    <div className="w-fit ml-auto mr-6">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.8708 16.71L3.67676 8.487C2.82776 7.5195 3.51776 6 4.80626 6H19.1943C19.4826 5.99975 19.765 6.08263 20.0074 6.23871C20.2499 6.39479 20.4423 6.61746 20.5614 6.88004C20.6806 7.14262 20.7216 7.434 20.6794 7.71927C20.6373 8.00454 20.5138 8.27161 20.3238 8.4885L13.1298 16.7085C12.989 16.8696 12.8153 16.9987 12.6205 17.0872C12.4257 17.1757 12.2142 17.2215 12.0003 17.2215C11.7863 17.2215 11.5748 17.1757 11.38 17.0872C11.1852 16.9987 11.0116 16.8696 10.8708 16.7085V16.71Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-6 text-white bg-[#565656]">
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">SCBD</p>
+                  </div>
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">Kuningan</p>
+                  </div>
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">Kemang</p>
+                  </div>
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">Sudirman</p>
+                  </div>
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">Senayan</p>
+                  </div>
+                  <div className="text-left pl-10 my-auto w-full  border border-black py-2">
+                    <p className="font-medium">Blok M</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-3 gap-6">
+                <div className="relative">
+                  <div className="z-10 absolute bottom-0 left-0 h-20 w-full text-base font-medium text-white bg-black/80">
+                    <p>Senayan City</p>
+                  </div>
+                  <img
+                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
+                    alt=""
+                    className="w-[9999px]"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
+                    alt=""
+                    className="w-[9999px]"
+                  />
+                </div>
+                <div>
+                  <img
+                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
+                    alt=""
+                    className="w-[9999px]"
+                  />
+                </div>
+              </div>
+            </div>
+          </main>
         </div>
       </div>
     </div>
