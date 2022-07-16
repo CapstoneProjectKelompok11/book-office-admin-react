@@ -5,8 +5,8 @@ import OrderDetail from "./pages/OrderDetail";
 
 function App() {
   return (
-    // <Dashboard/>
-    <OrderDetail/>
+    <Dashboard/>
+    // <OrderDetail/>
   );
 }
 

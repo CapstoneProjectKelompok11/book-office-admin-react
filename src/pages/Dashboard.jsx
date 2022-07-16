@@ -27,11 +27,31 @@ const Dashboard = () => {
       .catch((err) => {
         setError(err);
       });
+
     }, []);
     
     console.log("data",data)
+    
+    useEffect(()=> {
+      axios
+      .post(
+        
+      )
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+    })
 
-  return (
+    function handleOrder(e) {
+      e.preventDefault();
+      
+    }
+    
+    
+    return (
     <div>
       <div>
         <nav className="bg-white px-2 sm:px-4 py-2 fixed w-full shadow-lg">
