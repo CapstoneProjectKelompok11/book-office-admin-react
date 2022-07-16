@@ -223,10 +223,17 @@ const ManageList = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-3 gap-6 mt-10 mb-8">
                 <div className="relative">
-                  <div className="z-10 absolute bottom-0 left-0 h-20 w-full text-base font-medium text-white bg-black/80">
-                    <p>Senayan City</p>
+                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
+                    <div className="text-xs font-normal text-white mx-5 my-2">
+                      <p>SCBD</p>
+                      <p className="text-base font-medium">Equity Tower</p>
+                      <p>
+                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
+                        Senayan
+                      </p>
+                    </div>
                   </div>
                   <img
                     src="https://bitsofco.de/content/images/2018/12/broken-1.png"
@@ -234,14 +241,51 @@ const ManageList = () => {
                     className="w-[9999px]"
                   />
                 </div>
-                <div>
+                <div className="relative">
+                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
+                    <div className="text-xs font-normal text-white mx-5 my-2">
+                      <p>SCBD</p>
+                      <p className="text-base font-medium">Equity Tower</p>
+                      <p>
+                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
+                        Senayan
+                      </p>
+                    </div>
+                  </div>
                   <img
                     src="https://bitsofco.de/content/images/2018/12/broken-1.png"
                     alt=""
                     className="w-[9999px]"
                   />
                 </div>
-                <div>
+                <div className="relative">
+                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
+                    <div className="text-xs font-normal text-white mx-5 my-2">
+                      <p>SCBD</p>
+                      <p className="text-base font-medium">Equity Tower</p>
+                      <p>
+                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
+                        Senayan
+                      </p>
+                    </div>
+                  </div>
+                  <img
+                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
+                    alt=""
+                    className="w-[9999px]"
+                  />
+                </div>
+                <div className="relative">
+                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
+                    <div className="text-xs font-normal text-white mx-5 my-2">
+                      <p>SCBD</p>
+                      <p className="text-base font-medium">Equity Tower</p>
+                      <p>
+                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
+                        Senayan
+                      </p>
+                    </div>
+                  </div>
                   <img
                     src="https://bitsofco.de/content/images/2018/12/broken-1.png"
                     alt=""
