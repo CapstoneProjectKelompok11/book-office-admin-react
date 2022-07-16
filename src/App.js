@@ -1,11 +1,12 @@
 import "./App.css";
 import Login from "./components/Login";
-import AdminOrder from "./pages/AdminOrder";
-import Adminportal from "./pages/Adminportal";
+import Dashboard from "./pages/Dashboard";
+import OrderDetail from "./pages/OrderDetail";
 
 function App() {
   return (
-    <AdminOrder/>
+    // <Dashboard/>
+    <OrderDetail/>
   );
 }
 

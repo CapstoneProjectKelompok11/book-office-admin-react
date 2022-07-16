@@ -1,9 +1,36 @@
-import React from "react";
+
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const Adminportal = () => {
+
+
+const Dashboard = () => {
+
+  const [data, setData] = useState([]);
+  const [error, setError] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending", {
+          headers: {
+            Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk"
+          }
+        }
+      )
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    }, []);
+    
+    console.log("data",data)
+
   return (
     <div>
       <div>
@@ -20,12 +47,20 @@ const Adminportal = () => {
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      d="M21.675 9.0375C21.1479 7.78994 20.3838 6.6565 19.425 5.7C18.4685 4.74119 17.3351 3.97707 16.0875 3.45C14.7914 2.90156 13.418 2.625 12 2.625C10.582 2.625 9.20859 2.90156 7.9125 3.45C6.66494 3.97707 5.5315 4.74119 4.575 5.7C3.61619 6.6565 2.85207 7.78994 2.325 9.0375C1.77656 10.3336 1.5 11.707 1.5 13.125C1.5 16.2352 2.86641 19.1648 5.24766 21.1664L5.2875 21.1992C5.42344 21.3117 5.59453 21.375 5.77031 21.375H18.232C18.4078 21.375 18.5789 21.3117 18.7148 21.1992L18.7547 21.1664C21.1336 19.1648 22.5 16.2352 22.5 13.125C22.5 11.707 22.2211 10.3336 21.675 9.0375ZM17.8453 19.5938H6.15469C5.24905 18.7772 4.52524 17.7793 4.03021 16.6649C3.53518 15.5505 3.28001 14.3444 3.28125 13.125C3.28125 10.7953 4.18828 8.60625 5.83594 6.96094C7.48359 5.31328 9.67266 4.40625 12 4.40625C14.3297 4.40625 16.5188 5.31328 18.1641 6.96094C19.8117 8.60859 20.7188 10.7977 20.7188 13.125C20.7188 15.6 19.6758 17.9414 17.8453 19.5938ZM14.6133 9.87891C14.578 9.84401 14.5305 9.82444 14.4809 9.82444C14.4313 9.82444 14.3837 9.84401 14.3484 9.87891L12.368 11.8594C11.9297 11.7422 11.4445 11.8547 11.1 12.1992C10.978 12.321 10.8812 12.4657 10.8151 12.6249C10.749 12.7842 10.715 12.9549 10.715 13.1273C10.715 13.2998 10.749 13.4705 10.8151 13.6297C10.8812 13.789 10.978 13.9337 11.1 14.0555C11.2218 14.1775 11.3665 14.2743 11.5257 14.3404C11.685 14.4064 11.8557 14.4404 12.0281 14.4404C12.2005 14.4404 12.3713 14.4064 12.5305 14.3404C12.6898 14.2743 12.8344 14.1775 12.9562 14.0555C13.1195 13.8927 13.2369 13.6898 13.2965 13.4671C13.3562 13.2445 13.3561 13.0101 13.2961 12.7875L15.2766 10.807C15.3492 10.7344 15.3492 10.6148 15.2766 10.5422L14.6133 9.87891V9.87891ZM11.4844 7.5H12.5156C12.6188 7.5 12.7031 7.41563 12.7031 7.3125V5.4375C12.7031 5.33437 12.6188 5.25 12.5156 5.25H11.4844C11.3812 5.25 11.2969 5.33437 11.2969 5.4375V7.3125C11.2969 7.41563 11.3812 7.5 11.4844 7.5ZM17.5781 12.6094V13.6406C17.5781 13.7438 17.6625 13.8281 17.7656 13.8281H19.6406C19.7438 13.8281 19.8281 13.7438 19.8281 13.6406V12.6094C19.8281 12.5062 19.7438 12.4219 19.6406 12.4219H17.7656C17.6625 12.4219 17.5781 12.5062 17.5781 12.6094ZM17.8758 7.9875L17.1469 7.25859C17.1116 7.2237 17.064 7.20413 17.0145 7.20413C16.9649 7.20413 16.9173 7.2237 16.882 7.25859L15.5555 8.58516C15.5206 8.6204 15.501 8.66799 15.501 8.71758C15.501 8.76717 15.5206 8.81476 15.5555 8.85L16.2844 9.57891C16.357 9.65156 16.4766 9.65156 16.5492 9.57891L17.8758 8.25234C17.9484 8.17969 17.9484 8.06016 17.8758 7.9875ZM7.12734 7.25859C7.0921 7.2237 7.04452 7.20413 6.99492 7.20413C6.94533 7.20413 6.89774 7.2237 6.8625 7.25859L6.13359 7.9875C6.0987 8.02274 6.07913 8.07033 6.07913 8.11992C6.07913 8.16952 6.0987 8.2171 6.13359 8.25234L7.46016 9.57891C7.53281 9.65156 7.65234 9.65156 7.725 9.57891L8.45391 8.85C8.52656 8.77734 8.52656 8.65781 8.45391 8.58516L7.12734 7.25859ZM6.14062 12.4219H4.26562C4.1625 12.4219 4.07812 12.5062 4.07812 12.6094V13.6406C4.07812 13.7438 4.1625 13.8281 4.26562 13.8281H6.14062C6.24375 13.8281 6.32812 13.7438 6.32812 13.6406V12.6094C6.32812 12.5062 6.24375 12.4219 6.14062 12.4219Z"
+                      d="M14.25 0C14.4489 0 14.6397 0.0790176 14.7803 0.21967C14.921 0.360322 15 0.551088 15 0.75C15 0.948912 15.079 1.13968 15.2197 1.28033C15.3603 1.42098 15.5511 1.5 15.75 1.5C15.9489 1.5 16.1397 1.57902 16.2803 1.71967C16.421 1.86032 16.5 2.05109 16.5 2.25V3C16.5 3.19891 16.421 3.38968 16.2803 3.53033C16.1397 3.67098 15.9489 3.75 15.75 3.75H8.25C8.05109 3.75 7.86032 3.67098 7.71967 3.53033C7.57902 3.38968 7.5 3.19891 7.5 3V2.25C7.5 2.05109 7.57902 1.86032 7.71967 1.71967C7.86032 1.57902 8.05109 1.5 8.25 1.5C8.44891 1.5 8.63968 1.42098 8.78033 1.28033C8.92098 1.13968 9 0.948912 9 0.75C9 0.551088 9.07902 0.360322 9.21967 0.21967C9.36032 0.0790176 9.55109 0 9.75 0L14.25 0Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M4.5 3.75C4.5 3.55109 4.57902 3.36032 4.71967 3.21967C4.86032 3.07902 5.05109 3 5.25 3H6C6.19891 3 6.38968 2.92098 6.53033 2.78033C6.67098 2.63968 6.75 2.44891 6.75 2.25C6.75 2.05109 6.67098 1.86032 6.53033 1.71967C6.38968 1.57902 6.19891 1.5 6 1.5H5.25C4.65326 1.5 4.08097 1.73705 3.65901 2.15901C3.23705 2.58097 3 3.15326 3 3.75V21.75C3 22.3467 3.23705 22.919 3.65901 23.341C4.08097 23.7629 4.65326 24 5.25 24H18.75C19.3467 24 19.919 23.7629 20.341 23.341C20.7629 22.919 21 22.3467 21 21.75V3.75C21 3.15326 20.7629 2.58097 20.341 2.15901C19.919 1.73705 19.3467 1.5 18.75 1.5H18C17.8011 1.5 17.6103 1.57902 17.4697 1.71967C17.329 1.86032 17.25 2.05109 17.25 2.25C17.25 2.44891 17.329 2.63968 17.4697 2.78033C17.6103 2.92098 17.8011 3 18 3H18.75C18.9489 3 19.1397 3.07902 19.2803 3.21967C19.421 3.36032 19.5 3.55109 19.5 3.75V21.75C19.5 21.9489 19.421 22.1397 19.2803 22.2803C19.1397 22.421 18.9489 22.5 18.75 22.5H5.25C5.05109 22.5 4.86032 22.421 4.71967 22.2803C4.57902 22.1397 4.5 21.9489 4.5 21.75V3.75Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M15 10.5C15 10.1022 15.158 9.72064 15.4393 9.43934C15.7206 9.15804 16.1022 9 16.5 9C16.8978 9 17.2794 9.15804 17.5607 9.43934C17.842 9.72064 18 10.1022 18 10.5V18C18 18.3978 17.842 18.7794 17.5607 19.0607C17.2794 19.342 16.8978 19.5 16.5 19.5C16.1022 19.5 15.7206 19.342 15.4393 19.0607C15.158 18.7794 15 18.3978 15 18V10.5ZM6 16.5C6 16.1022 6.15804 15.7206 6.43934 15.4393C6.72064 15.158 7.10218 15 7.5 15C7.89782 15 8.27936 15.158 8.56066 15.4393C8.84196 15.7206 9 16.1022 9 16.5V18C9 18.3978 8.84196 18.7794 8.56066 19.0607C8.27936 19.342 7.89782 19.5 7.5 19.5C7.10218 19.5 6.72064 19.342 6.43934 19.0607C6.15804 18.7794 6 18.3978 6 18V16.5ZM12 12C11.6022 12 11.2206 12.158 10.9393 12.4393C10.658 12.7206 10.5 13.1022 10.5 13.5V18C10.5 18.3978 10.658 18.7794 10.9393 19.0607C11.2206 19.342 11.6022 19.5 12 19.5C12.3978 19.5 12.7794 19.342 13.0607 19.0607C13.342 18.7794 13.5 18.3978 13.5 18V13.5C13.5 13.1022 13.342 12.7206 13.0607 12.4393C12.7794 12.158 12.3978 12 12 12Z"
                       fill="black"
                     />
                   </svg>
                 </span>
-                <p>Dashboard</p>
+                <p>Pending Order</p>
               </div>
             </div>
           </div>
@@ -205,128 +240,8 @@ const Adminportal = () => {
             </div>
           </aside>
           <main className="flex-1 ml-80">
-            <div className="pt-10 px-10 pb-3">
+            <div className="pt-20 px-10 pb-3">
               <div>
-                <section className="text-gray-600 body-font">
-                  <div className="container px-10 py-10 mx-auto">
-                    <div className="flex flex-wrap -m-4">
-                      <div className="p-4 md:w-1/3">
-                        <div className="flex rounded-lg h-full bg-gray-100 flex-col">
-                          <div className="flex items-center mb-3 p-8">
-                            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                              </svg>
-                            </div>
-                            <h2 className="text-gray-900 text-xl title-font font-medium">
-                              Building List
-                            </h2>
-                          </div>
-                          <div className="flex-grow text-right w-full">
-                            <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
-                              See Details
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-4 h-4 ml-2"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 md:w-1/3">
-                        <div className="flex rounded-lg h-full bg-gray-100 flex-col">
-                          <div className="flex items-center mb-3 p-8">
-                            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                              </svg>
-                            </div>
-                            <h2 className="text-gray-900 text-xl title-font font-medium">
-                              Order List
-                            </h2>
-                          </div>
-                          <div className="flex-grow text-right w-full">
-                            <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
-                              See Details
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-4 h-4 ml-2"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-4 md:w-1/3">
-                        <div className="flex rounded-lg h-full bg-gray-100 flex-col">
-                          <div className="flex items-center mb-3 p-8">
-                            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-indigo-500 text-white flex-shrink-0">
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                              </svg>
-                            </div>
-                            <h2 className="text-gray-900 text-xl title-font font-medium">
-                              New Review
-                            </h2>
-                          </div>
-                          <div className="flex-grow text-right w-full">
-                            <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
-                              See Details
-                              <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-4 h-4 ml-2"
-                                viewBox="0 0 24 24"
-                              >
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                              </svg>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
                 <table className="w-full border border-slate-500">
                   <tbody>
                     <tr>
@@ -337,6 +252,7 @@ const Adminportal = () => {
                         Pending Order
                       </th>
                     </tr>
+              
                     <tr>
                       <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
                         Building
@@ -348,12 +264,13 @@ const Adminportal = () => {
                         Details
                       </th>
                       <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
-                        Inbox
+                        Status
                       </th>
                       <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
                         Manage
                       </th>
                     </tr>
+                  {data?.map((admin) => (            
                     <tr>
                       <td className="p-2 border border-black">
                         <div className="flex items-start">
@@ -361,8 +278,8 @@ const Adminportal = () => {
                             <img className="m-auto" src={building} alt="" />{" "}
                           </div>
                           <div className="p-1">
-                            <h1 className="font-semibold">Equity Tower</h1>
-                            <p>SCBD, Jakarta Selatan</p>
+                            <h1 className="font-semibold">{admin.building.name}</h1>
+                            <p>{admin.building.complex.complex_name}</p>
                           </div>
                         </div>
                       </td>
@@ -372,43 +289,43 @@ const Adminportal = () => {
                             <img className="m-auto" src={user} alt="" />{" "}
                           </div>
                           <div className="p-1">
-                            <h1 className="font-semibold">Fatih Safaat</h1>
-                            <p>fatihsafat@gmail.com</p>
+                            <h1 className="font-semibold">{admin.user.first_name}</h1>
+                            <p>{admin.user.email}</p>
                           </div>
                         </div>
                       </td>
                       <td className="p-2 border border-black w-56">
                         <div className="flex justify-between">
                           <p className="font-semibold">Booking ID</p>
-                          <p className="text-right">01</p>
+                          <p className="text-right">{admin.id}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Phone</p>
-                          <p className="text-right">081299094828</p>
+                          <p className="text-right">{admin.user.phone}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Floor</p>
-                          <p className="text-right">48th</p>
+                          <p className="text-right">{admin.floor.name}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Type</p>
-                          <p className="text-right">Serviced Office</p>
+                          <p className="text-right">{admin.floor.type}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Participant</p>
-                          <p className="text-right">8 People</p>
+                          <p className="text-right">{admin.participant}</p>
                         </div>
                         <div className="flex justify-between">
                           <p className="font-semibold">Date Book</p>
-                          <p className="text-right">20 juni 2022</p>
+                          <p className="text-right">{admin.start_reservation}</p>
                         </div>
                       </td>
-                      <td className="p-2 border border-black text-center ">
+                      <td className="p-2 border border-black text-center">
                         <button
                           type="button"
-                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                          class="m-auto text-white bg-[#FBCD0A] hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
                         >
-                          Message
+                          Order Inactive
                         </button>
                       </td>
                       <td className="p-2 border border-black text-center w-56">
@@ -416,17 +333,27 @@ const Adminportal = () => {
                           type="button"
                           class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                         >
-                          Add Order
+                          Details
                         </button>
                         &nbsp;
                         <button
                           type="button"
-                          class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                          class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                          Cancel
+                          Massage
                         </button>
+                        <div className="pt-4">
+                          <button
+                            type="button"
+                            class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          >
+                            View Payment
+                          </button>
+                        </div>
                       </td>
                     </tr>
+))}
+
                   </tbody>
                 </table>
               </div>
@@ -438,4 +365,4 @@ const Adminportal = () => {
   );
 };
 
-export default Adminportal;
+export default Dashboard;
