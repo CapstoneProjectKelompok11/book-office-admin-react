@@ -2,6 +2,7 @@ import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
 import axios from "axios";
+import { Link } from "react-router-dom"
 import React, { useEffect, useState } from "react";
 
 const OrderDetail = () => {
@@ -68,7 +69,8 @@ const OrderDetail = () => {
                 </ul>
               </div>
               <ul className="space-y-2 py-4 px-6">
-                <li>
+              <li>
+                <Link to="/Dashboard">
                   <a
                     href="#"
                     className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-10 items-center px-6 py-4 text-base font-normal text-white bg-[#565656] rounded-lg "
@@ -89,8 +91,10 @@ const OrderDetail = () => {
                       Dashboard
                     </span>
                   </a>
+                  </Link>
                 </li>
                 <li>
+                  <Link to="/OrderDetail"> 
                   <a
                     href="#"
                     className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
@@ -120,6 +124,7 @@ const OrderDetail = () => {
                       Order Details
                     </span>
                   </a>
+                </Link>
                 </li>
                 <li>
                   <a

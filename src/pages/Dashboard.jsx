@@ -3,7 +3,10 @@ import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
 import axios from "axios";
+import {Link} from "react-router-dom"
 import React, { useEffect, useState } from "react";
+import PopUp from "../components/PopUp"
+import Cookies from "js-cookie";
 
 
 
@@ -11,15 +14,16 @@ const Dashboard = () => {
 
   const [data, setData] = useState([]);
   const [error, setError] = useState([]);
+  const [isPopUpShow, setIsPopUpShow] = useState(false);
 
   useEffect(() => {
     axios
-      .get(
-        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending", {
-          headers: {
-            Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk"
-          }
+    .get(
+      "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending", {
+        headers: {
+          Authorization: "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk"
         }
+      }
       )
       .then((res) => {
         setData(res.data.data);
@@ -29,26 +33,63 @@ const Dashboard = () => {
       });
 
     }, []);
-    
     console.log("data",data)
     
-    useEffect(()=> {
-      axios
-      .post(
-        
-      )
-      .then((res) => {
-        setData(res.data.data);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-    })
-
-    function handleOrder(e) {
-      e.preventDefault();
+    
+    // useEffect(()=> {
+      // })
       
+      const [selectOrder, setSelectOrder] = useState();
+      const filtered = data.filter((session) => {  
+          return(
+             session.id === selectOrder 
+              )
+            });
+            
+            console.log("filtered",filtered)
+
+    const handleSelectOrder = (id) => {
+      setSelectOrder(id);
+      console.log("id", id)
+
     }
+
+      const handleOrder = (e) => {
+        // e.preventDefault();
+        const date = filtered.start_reservation?.substring(8,10) + '-' + filtered.start_reservation?.substring(5,7) + '-' + filtered.start_reservation?.substring(0,4);
+
+        const SubmitData = {
+          start_reservation:date+" 00:00:00",
+          company:filtered.company,
+          price:filtered.price,
+          phone:filtered.phone,
+          participant:filtered.participant,
+          note:filtered.note,     
+        }
+
+        axios
+        .post(
+          `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=18&floorId=3`, SubmitData, {
+            headers : {
+              'Authorization': `Bearer ${Cookies.get('token')}`
+            }
+          } 
+        )
+        .then((res) => {
+          setData(res.data.data);
+        })
+        .catch((err) => {
+          setError(err);
+        })
+
+          
+        }
+
+
+        function handleDelete(e) {
+          e.preventDefault();
+          
+        }
     
     
     return (
@@ -99,6 +140,7 @@ const Dashboard = () => {
               </div>
               <ul className="space-y-2 py-4 px-6">
                 <li>
+                <Link to="/Dashboard">
                   <a
                     href="#"
                     className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-10 items-center px-6 py-4 text-base font-normal text-white bg-[#565656] rounded-lg "
@@ -119,8 +161,10 @@ const Dashboard = () => {
                       Dashboard
                     </span>
                   </a>
+                  </Link>
                 </li>
                 <li>
+                  <Link to="/OrderDetail"> 
                   <a
                     href="#"
                     className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
@@ -150,6 +194,7 @@ const Dashboard = () => {
                       Order Details
                     </span>
                   </a>
+                </Link>
                 </li>
                 <li>
                   <a
@@ -340,42 +385,39 @@ const Dashboard = () => {
                           <p className="text-right">{admin.start_reservation}</p>
                         </div>
                       </td>
-                      <td className="p-2 border border-black text-center">
-                        <button
-                          type="button"
-                          class="m-auto text-white bg-[#FBCD0A] hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
-                        >
-                          Order Inactive
-                        </button>
-                      </td>
-                      <td className="p-2 border border-black text-center w-56">
-                        <button
-                          type="button"
-                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        >
-                          Details
-                        </button>
-                        &nbsp;
-                        <button
-                          type="button"
-                          class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        >
-                          Massage
-                        </button>
-                        <div className="pt-4">
+                      <td className="p-2 border border-black text-center ">
                           <button
                             type="button"
-                            class="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                           >
-                            View Payment
+                            Message
                           </button>
-                        </div>
-                      </td>
+                        </td>
+                      <td className="p-2 border border-black text-center w-56">
+                          <button
+                            type="button"
+                            class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            onClick={() => {setIsPopUpShow(true);
+                              handleSelectOrder(admin.id)
+                             }}
+                          >
+                            Add Order
+                          </button>
+                          &nbsp;
+                          <button
+                            type="button"
+                            class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                          onClick={handleDelete}
+                          >
+                            Cancel
+                          </button>
+                        </td>
                     </tr>
 ))}
 
                   </tbody>
                 </table>
+      <PopUp show={isPopUpShow} handleOrder={handleOrder} onClose={() => setIsPopUpShow(false)} />
               </div>
             </div>
           </main>
