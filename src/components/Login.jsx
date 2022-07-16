@@ -73,7 +73,7 @@ const Login = () => {
           setAllValid("valid");
           setLoading(false);
           console.log("response", response)
-          navigate("/");
+          navigate("/Dashboard");
           Cookies.set("token", response.data.data.token);
         })
         .catch((error) => {
@@ -104,7 +104,7 @@ const Login = () => {
           </div>
           <div className="px-8 py-6">
             <h3 className="text-xl font-bold text-center">Admin Portal</h3>
-            <form action>
+            <form onSubmit={handleSubmit}>
               <div className="mt-4">
                 <div>
                   <label className="block text-base" htmlFor="email">
@@ -114,6 +114,10 @@ const Login = () => {
                         type="text"
                         placeholder="Email"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        onChange={(e) => {
+                          handleEmail(e);
+                        }}
+                        validators={[isEmailValid, isAllValid]}
                       />
                     </label>
                   </label>
@@ -126,12 +130,17 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        onChange={(e) => {
+                          handlePassword(e);
+                        }}
+                        validators={[isPasswordValid, isAllValid]}
                       />
                     </label>
                   </label>
                 </div>
                 <div className="flex items-baseline justify-between">
-                  <button className="px-6 py-2 mt-4 text-white bg-[#4D89FF] rounded-lg hover:bg-blue-900 m-auto">
+                  <button className="px-6 py-2 mt-4 text-white bg-[#4D89FF] rounded-lg hover:bg-blue-900 m-auto"
+                   type="submit">
                     Login
                   </button>
                 </div>
