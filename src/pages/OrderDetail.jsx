@@ -8,6 +8,7 @@ import LeftBar from "../components/LeftBar";
 
 const OrderDetail = () => {
   const [data, setData] = useState([]);
+  const [datam, setDatam] = useState([]);
   const [error, setError] = useState([]);
 
   useEffect(() => {
@@ -30,6 +31,25 @@ const OrderDetail = () => {
   }, []);
 
   console.log("data", data);
+
+  useEffect(() => {
+    axios
+      .get(
+        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/buildings",
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0MzM2NCwiZXhwIjoxNjU4MTI5NzY0fQ.V6u6OigZ6l7Kqy58ihUjryamiWPXnGD60IauB8kkygg",
+          },
+        }
+      )
+      .then((res) => {
+        setDatam(res.data.data);
+      })
+      .catch((err) => {
+        setError(err);
+      });
+  }, []);
 
   return (
     <div>
@@ -84,6 +104,7 @@ const OrderDetail = () => {
                             <h2 className="text-gray-900 text-xl title-font font-medium">
                               Building List
                             </h2>
+                            <p>{datam.length}</p>
                           </div>
                           <div className="flex-grow text-right w-full">
                             <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
@@ -122,6 +143,7 @@ const OrderDetail = () => {
                             <h2 className="text-gray-900 text-xl title-font font-medium">
                               Order List
                             </h2>
+                            <p>{data.length}</p>
                           </div>
                           <div className="flex-grow text-right w-full">
                             <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">

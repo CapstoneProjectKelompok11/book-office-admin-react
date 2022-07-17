@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-export default function PopUp({ show, onClose, handleOrder }) {
+export default function PopUp({ show, onClose, handleOrder, items }) {
+  console.log("items",items)
+
   return (
     <div>
        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none ">
@@ -22,7 +24,7 @@ export default function PopUp({ show, onClose, handleOrder }) {
                     ></button>
                   </div>
                   {/*body*/}
-                  <form >
+                  <form onSubmit={handleOrder}>
                   <div className="w-[550px] mx-auto">
                     <div>
                       <p className="text-center text-xl font-medium">
@@ -30,24 +32,38 @@ export default function PopUp({ show, onClose, handleOrder }) {
                       </p>
                     </div>
                     <div>
+                      <p className="text-xl font-medium my-3">Username</p>
+                      <input
+                        type="text"
+                        name="company"
+                        id=""
+                        className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
+                        value={items[0].user.first_name}
+                      />
+                    </div>
+
+                    <div>
+                      <p className="text-xl font-medium my-3">Building</p>
+                      <input
+                        type="text"
+                        name="company"
+                        id=""
+                        className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
+                        value={items[0].company}
+                      />
+                    </div>
+
+                    <div>
                       <p className="text-xl font-medium my-3">Type Office</p>
                       <form className="flex items-center max-w-[700px] mx-auto w-full border-2 p-1 rounded-md text-black bg-white border-black">
                         <div className="flex items-center w-full ">
-                          <select
+                          <input
                             id="location"
                             name="location"
                             className="bg-transparent w-full focus:outline-none mx-2 text-black "
+                            value={items[0].office_type}
                             >
-                            <option value="jakarta barat">
-                              Jakarta Barat Floor 
-                            </option>
-                            <option value="jakarta pusat">Jakarta Pusat</option>
-                            <option value="jakarta selatan">
-                              Jakarta Selatan
-                            </option>
-                            <option value="jakarta timur">Jakarta Timur</option>
-                            <option value="jakarta utara">Jakarta Utara</option>
-                          </select>
+                          </input>
                         </div>
                       </form>
                     </div>
@@ -57,11 +73,11 @@ export default function PopUp({ show, onClose, handleOrder }) {
                           Start Booking
                         </p>
                         <input
-                          type="date"
+                          type="text"
                           name="reservation"
                           id=""
                           className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
-                          // value={dataForm.reservation}
+                          value={items[0].start_reservation}
                           // onChange={handleInput}
                         />
                       </div>
@@ -69,23 +85,18 @@ export default function PopUp({ show, onClose, handleOrder }) {
                         <p className="text-xl font-medium my-3">Participant</p>
                         <form className="flex items-center max-w-[700px] mx-auto w-full border-2 p-1 rounded-md text-black bg-white border-black">
                           <div className="flex items-center w-full ">
-                            <select
+                            <input
                               id=""
                               name="participant"
                               className="bg-transparent w-full focus:outline-none mx-2 text-black "
-                              // value={dataForm.participant}
-                              // onChange={handleInput}
+                              value={items[0].participant}
                             >
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                            </select>
+                            </input>
                           </div>
                         </form>
                       </div>
                     </div>
+
                     <div>
                       <p className="text-xl font-medium my-3">Company Name</p>
                       <input
@@ -93,7 +104,7 @@ export default function PopUp({ show, onClose, handleOrder }) {
                         name="company"
                         id=""
                         className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
-                        // value={dataForm.company}
+                        value={items[0].company}
                         //   onChange={handleInput}
                       />
                     </div>
@@ -104,19 +115,11 @@ export default function PopUp({ show, onClose, handleOrder }) {
                         name="phone"
                         id=""
                         className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
-                        // value={dataForm.phone}
+                        value={items[0].phone}
                         // onChange={handleInput}
                       />
                     </div>
-                    <div>
-                      <p className="text-xl font-medium my-3">Quick Message</p>
-                      {/* <textarea className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
-                      name="note"
-                      value={dataForm.note}
-                      onChange={handleInput}>
-                        
-                      </textarea> */}
-                    </div>
+                  
                     
                     <div>
                       <div className="w-full">
@@ -124,8 +127,9 @@ export default function PopUp({ show, onClose, handleOrder }) {
                           <button
                             className="text-xl font-normal py-2 text-white bg-blue-500 shadow-sm rounded-lg w-full"
                            type="submit"
+
                           >
-                            Request a Booking
+                            Add Booking
                           </button>
                         </div>
                       </div>

@@ -19,8 +19,7 @@ const Dashboard = () => {
         "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending",
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0Mjk5MywiZXhwIjoxNjU4MTI5MzkzfQ.ulncMqzo1lLA39swiH8ut0-BjQOr9nQhsDXsJBGlpck",
+            'Authorization': `Bearer ${Cookies.get('token')}`
           },
         }
       )
@@ -48,7 +47,7 @@ const Dashboard = () => {
     console.log("id", id);
   };
 
-  const handleOrder = (e) => {
+  const handleOrder = (id) => {
     // e.preventDefault();
     const date =
       filtered.start_reservation?.substring(8, 10) +
@@ -68,7 +67,7 @@ const Dashboard = () => {
 
     axios
       .post(
-        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=18&floorId=3`,
+        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=18&floorId=2`,
         SubmitData,
         {
           headers: {
@@ -242,17 +241,19 @@ const Dashboard = () => {
                   ))}
                 </tbody>
               </table>
-              {/* <PopUp
-                show={isPopUpShow}
-                handleOrder={handleOrder}
-                onClose={() => setIsPopUpShow(false)}
-              /> */}
             </div>
           </div>
         </main>
       </div>
+      {isPopUpShow ? <PopUp
+                show={isPopUpShow}
+                handleOrder={handleOrder}
+                items={filtered}
+                onClose={() => setIsPopUpShow(false)}
+              /> : <div/> }
     </div>
   );
 };
+
 
 export default Dashboard;
