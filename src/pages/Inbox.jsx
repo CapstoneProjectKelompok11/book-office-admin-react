@@ -144,7 +144,7 @@ const Inbox = () => {
                     </div>
                   </div>
                   <div className="w-full border border-black h-32 ">
-                    <div className="mx-2 my-2 h-[100px] w-full">
+                    <div className="mx-2 my-1 h-[100px] w-full">
                       <textarea
                         className="focus:outline-none"
                         name=""
