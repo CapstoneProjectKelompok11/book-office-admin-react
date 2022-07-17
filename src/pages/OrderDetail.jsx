@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 import PopUp from "../components/PopUp";
 import Cookies from "js-cookie";
 import LeftBar from "../components/LeftBar";
@@ -129,7 +129,7 @@ const OrderDetail = () => {
                   </tr>
 
                   <tr>
-                    <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
+                    <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3 w-[250px]">
                       Building
                     </th>
                     <th className="text-white bg-[#4D89FF] border border-black text-left py-2 px-3">
@@ -160,14 +160,15 @@ const OrderDetail = () => {
                             <h1 className="font-semibold">
                               {admin.building.name}
                             </h1>
-                            <p>{admin.building.complex.complex_name}</p>
+                            <p>{admin.building.complex.complex_name}</p>{" "}
+                            <p>{admin.building.complex.city.city_name}</p>
                           </div>
                         </div>
                       </td>
                       <td className="p-2 border border-black">
                         <div className="flex">
                           <div>
-                            <img className="w-24 h-24" src={user} alt="" />{" "}
+                            <img className="m-auto " src={user} alt="" />{" "}
                           </div>
                           <div className="p-1">
                             <h1 className="font-semibold">
@@ -206,12 +207,14 @@ const OrderDetail = () => {
                         </div>
                       </td>
                       <td className="p-2 border border-black text-center ">
-                        <button
-                          type="button"
-                          class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                        >
-                          Message
-                        </button>
+                        <Link to="/Inbox">
+                          <button
+                            type="button"
+                            class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                          >
+                            Message
+                          </button>
+                        </Link>
                       </td>
                       <td className="p-2 border border-black text-center w-56">
                         <button

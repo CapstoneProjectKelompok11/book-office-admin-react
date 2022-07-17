@@ -98,10 +98,10 @@ const Dashboard = () => {
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                               </svg>
                             </div>
-                            <h2 className="text-gray-900 text-xl title-font font-medium">
-                              Building List
-                            </h2>
-                            <p>{datam.length}</p>
+                            <div className="items-center flex text-gray-900 text-xl title-font font-medium">
+                              <h2 className=" mr-2">Building List</h2>
+                              <p>{datam.length}</p>
+                            </div>
                           </div>
                           <div className="flex-grow text-right w-full">
                             <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
@@ -137,10 +137,10 @@ const Dashboard = () => {
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
                               </svg>
                             </div>
-                            <h2 className="text-gray-900 text-xl title-font font-medium">
-                              Order List
-                            </h2>
-                            <p>{data.length}</p>
+                            <div className="items-center flex text-gray-900 text-xl title-font font-medium">
+                              <h2 className=" mr-2">Order List</h2>
+                              <p>{data.length}</p>
+                            </div>
                           </div>
                           <div className="flex-grow text-right w-full">
                             <a className="mt-3 text-white inline-flex items-center justify-end bg-[#4D89FF] w-full text-right px-3 py-1">
@@ -243,7 +243,8 @@ const Dashboard = () => {
                               <h1 className="font-semibold">
                                 {admin.building.name}
                               </h1>
-                              <p>{admin.building.complex.complex_name}</p>
+                              <p>{admin.building.complex.complex_name}</p>{" "}
+                              <p>{admin.building.complex.city.city_name}</p>
                             </div>
                           </div>
                         </td>
@@ -289,12 +290,14 @@ const Dashboard = () => {
                           </div>
                         </td>
                         <td className="p-2 border border-black text-center ">
-                          <button
-                            type="button"
-                            class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                          >
-                            Message
-                          </button>
+                          <Link to="/Inbox">
+                            <button
+                              type="button"
+                              class="m-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                            >
+                              Message
+                            </button>
+                          </Link>
                         </td>
                         <td className="p-2 border border-black text-center w-56">
                           <button
