@@ -92,18 +92,18 @@ const Inbox = () => {
                           Assalamualaikum
                         </p>
                       </div>
-                      <p className="text-xs mb-1">June 15 2022, 14:46 PM</p>
+                      <p className="text-xs mb-1">June 18 2022, 14:46</p>
                     </div>
                   </div>
                   <div className="bg-white w-full py-2">
                     <div className="max-w-[900px] w-fit ml-auto mr-8">
                       <div className="bg-gray-300 rounded-md ">
-                        <p className="text-base font-medium text-left mt-3 mb-1 py-1 px-2">
+                        <p className="text-base font-medium text-right mt-3 mb-1 py-1 px-2">
                           Waalaikumsalam
                         </p>
                       </div>
                       <p className="text-xs mb-1 text-right">
-                        June 15 2022, 14:46 PM
+                        June 18 2022, 14:47
                       </p>
                     </div>
                   </div>
@@ -114,18 +114,30 @@ const Inbox = () => {
                           Ada apa ?
                         </p>
                       </div>
-                      <p className="text-xs mb-1 ">June 15 2022, 14:46 PM</p>
+                      <p className="text-xs mb-1 ">June 18 2022, 14:47</p>
+                    </div>
+                  </div>
+                  <div className="bg-white w-full py-2">
+                    <div className="max-w-[900px] w-fit ml-auto mr-8">
+                      <div className="bg-gray-300 rounded-md w-fit">
+                        <p className="text-base font-medium text-right mt-3 mb-1 py-1 px-2">
+                          Lahhhh -_-
+                        </p>
+                      </div>
+                      <p className="text-xs mb-1 text-right">
+                        June 18 2022, 14:47
+                      </p>
                     </div>
                   </div>
                   <div className="bg-white w-full py-2">
                     <div className="max-w-[900px] w-fit ml-auto mr-8">
                       <div className="bg-gray-300 rounded-md ">
-                        <p className="text-base font-medium text-left mt-3 mb-1 py-1 px-2">
+                        <p className="text-base font-medium text-right mt-3 mb-1 py-1 px-2">
                           Bismillah Headshot
                         </p>
                       </div>
                       <p className="text-xs mb-1 text-right">
-                        June 15 2022, 14:46 PM
+                        June 18 2022, 14:47
                       </p>
                     </div>
                   </div>
@@ -139,7 +151,7 @@ const Inbox = () => {
                         />
                       </div>
                       <p className="text-xs mb-1 text-right">
-                        June 15 2022, 14:46 PM
+                        June 18 2022, 14:48
                       </p>
                     </div>
                   </div>

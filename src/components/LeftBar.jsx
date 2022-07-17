@@ -170,13 +170,17 @@ const LeftBar = () => {
               </ul>
             </div>
           </div>
-          <div className=" flex py-6 bg-[#565656] text-center text-white">
+          <div className="flex py-6 bg-[#565656] text-center text-white">
             <a href="/" aria-label="Author" title="Author" className="mr-3">
               <div>
-                <img className="pl-16 m-auto" src={user} alt="" />
+                <img
+                  className="pl-10 mx-auto w-auto h-14"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN8ALhTqoxl7p-VY_AdUkr5MjPuDk_P1K5QNQGGJt4WcYWbRA5QiKtkG43T_RoONslo8U&usqp=CAU"
+                  alt=""
+                />
               </div>
             </a>
-            <p className="m-auto ml-1">Rizqi Hidayat</p>
+            <p className="my-auto">Wiwod</p>
           </div>
         </div>
       </aside>
