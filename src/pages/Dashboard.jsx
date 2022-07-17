@@ -242,11 +242,11 @@ const Dashboard = () => {
                   ))}
                 </tbody>
               </table>
-              <PopUp
+              {/* <PopUp
                 show={isPopUpShow}
                 handleOrder={handleOrder}
                 onClose={() => setIsPopUpShow(false)}
-              />
+              /> */}
             </div>
           </div>
         </main>

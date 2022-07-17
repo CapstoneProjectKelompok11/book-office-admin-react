@@ -17,7 +17,7 @@ const OrderDetail = () => {
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk",
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0Mjk5MywiZXhwIjoxNjU4MTI5MzkzfQ.ulncMqzo1lLA39swiH8ut0-BjQOr9nQhsDXsJBGlpck",
           },
         }
       )
