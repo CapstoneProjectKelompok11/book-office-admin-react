@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function PopUp({ show, onClose, handleOrder, items }) {
-  console.log("items",items)
+  console.log("items", items[0].id)
+
+  const getId = {reservationId: items[0].id, floorId: items[0].floor.id}
+  console.log("getid", getId)
 
   return (
     <div>
@@ -24,7 +27,7 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                     ></button>
                   </div>
                   {/*body*/}
-                  <form onSubmit={handleOrder}>
+                  {/* <form onSubmit={() => {handleOrder(getId)}}> */}
                   <div className="w-[550px] mx-auto">
                     <div>
                       <p className="text-center text-xl font-medium">
@@ -126,7 +129,8 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                         <div className="text-center my-10">
                           <button
                             className="text-xl font-normal py-2 text-white bg-blue-500 shadow-sm rounded-lg w-full"
-                           type="submit"
+                           type="button"
+                           onClick={() => {handleOrder(getId)}}
 
                           >
                             Add Booking
@@ -135,7 +139,7 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                       </div>
                     </div>
                   </div>
-                  </form>
+                  {/* </form> */}
                 </div>
               </div>
             </div>

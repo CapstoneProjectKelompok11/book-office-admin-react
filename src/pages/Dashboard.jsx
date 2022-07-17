@@ -40,7 +40,7 @@ const Dashboard = () => {
     return session.id === selectOrder;
   });
 
-  console.log("filtered", filtered);
+  console.log("filtered", filtered.id);
 
   const handleSelectOrder = (id) => {
     setSelectOrder(id);
@@ -49,25 +49,19 @@ const Dashboard = () => {
 
   const handleOrder = (id) => {
     // e.preventDefault();
-    const date =
-      filtered.start_reservation?.substring(8, 10) +
-      "-" +
-      filtered.start_reservation?.substring(5, 7) +
-      "-" +
-      filtered.start_reservation?.substring(0, 4);
 
     const SubmitData = {
-      start_reservation: date + " 00:00:00",
-      company: filtered.company,
-      price: filtered.price,
-      phone: filtered.phone,
-      participant: filtered.participant,
-      note: filtered.note,
+      start_reservation: filtered[0].start_reservation,
+      company: filtered[0].company,
+      price: filtered[0].price,
+      phone: filtered[0].phone,
+      participant: filtered[0].participant,
+      note: filtered[0].note,
     };
 
     axios
       .post(
-        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=18&floorId=2`,
+        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=${id.reservationId}&floorId=${id.floorId}`,
         SubmitData,
         {
           headers: {
@@ -76,11 +70,9 @@ const Dashboard = () => {
         }
       )
       .then((res) => {
-        setData(res.data.data);
+        alert("berhasil")
+        console.log("res", res);
       })
-      .catch((err) => {
-        setError(err);
-      });
   };
 
   function handleDelete(e) {
