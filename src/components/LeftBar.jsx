@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const LeftBar = () => {
   return (
-    <div className="max-h-screen">
+    <div className="max-h-screen z-50">
       <aside className="w-80 fixed left-0 top-0 bg-white drop-shadow-lg ">
         <div className="overflow-y-auto custom-bg-tosca h-full rounded">
           <div>

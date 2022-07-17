@@ -121,7 +121,7 @@ const Inbox = () => {
                     <div className="max-w-[900px] w-fit ml-auto mr-8">
                       <div className="bg-gray-300 rounded-md w-fit">
                         <p className="text-base font-medium text-right mt-3 mb-1 py-1 px-2">
-                          Lahhhh -_-
+                          Lahhhh -_- Situ yang ngechat duluannnn
                         </p>
                       </div>
                       <p className="text-xs mb-1 text-right">

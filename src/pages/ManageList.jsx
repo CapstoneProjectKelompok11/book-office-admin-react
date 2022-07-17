@@ -12,15 +12,12 @@ const ManageList = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/buildings",
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0MzM2NCwiZXhwIjoxNjU4MTI5NzY0fQ.V6u6OigZ6l7Kqy58ihUjryamiWPXnGD60IauB8kkygg",
-          },
-        }
-      )
+      .get("http://ec2-18-206-213-94.compute-1.amazonaws.com/api/buildings", {
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0MzM2NCwiZXhwIjoxNjU4MTI5NzY0fQ.V6u6OigZ6l7Kqy58ihUjryamiWPXnGD60IauB8kkygg",
+        },
+      })
       .then((res) => {
         setData(res.data.data);
       })
@@ -34,7 +31,7 @@ const ManageList = () => {
   return (
     <div>
       <div>
-        <nav className="bg-white px-2 sm:px-4 py-2 fixed w-full shadow-lg">
+        <nav className="bg-white px-2 sm:px-4 py-2 fixed w-full shadow-lg z-40">
           <div className="md:px-20 px-10 flex flex-wrap justify-between items-center mx-auto">
             <div className="grid grid-cols-2 content-center">
               <div className="relative flex pl-60 text-xl text-black pt-1">
@@ -80,7 +77,7 @@ const ManageList = () => {
                     <p className="font-bold">Order Details</p>
                   </div>
                   <div className="my-auto ml-auto mr-6">
-                    <div className="rounded-lg bg-[#4D89FF] w-fit flex py-2">
+                    <div className="rounded-lg bg-[#4D89FF] w-fit flex py-2 cursor-pointer">
                       <div className="ml-3">
                         <svg
                           width="24"
@@ -224,74 +221,30 @@ const ManageList = () => {
                 </div>
               </div>
               <div className="grid grid-cols-3 gap-6 mt-10 mb-8">
-                <div className="relative">
-                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
-                    <div className="text-xs font-normal text-white mx-5 my-2">
-                      <p>SCBD</p>
-                      <p className="text-base font-medium">Equity Tower</p>
-                      <p>
-                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
-                        Senayan
-                      </p>
-                    </div>
-                  </div>
-                  <img
-                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
-                    alt=""
-                    className="w-[9999px]"
-                  />
-                </div>
-                <div className="relative">
-                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
-                    <div className="text-xs font-normal text-white mx-5 my-2">
-                      <p>SCBD</p>
-                      <p className="text-base font-medium">Equity Tower</p>
-                      <p>
-                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
-                        Senayan
-                      </p>
-                    </div>
-                  </div>
-                  <img
-                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
-                    alt=""
-                    className="w-[9999px]"
-                  />
-                </div>
-                <div className="relative">
-                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
-                    <div className="text-xs font-normal text-white mx-5 my-2">
-                      <p>SCBD</p>
-                      <p className="text-base font-medium">Equity Tower</p>
-                      <p>
-                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
-                        Senayan
-                      </p>
-                    </div>
-                  </div>
-                  <img
-                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
-                    alt=""
-                    className="w-[9999px]"
-                  />
-                </div>
-                <div className="relative">
-                  <div className="z-10 absolute bottom-0 left-0 h-28 w-full  bg-black/80">
-                    <div className="text-xs font-normal text-white mx-5 my-2">
-                      <p>SCBD</p>
-                      <p className="text-base font-medium">Equity Tower</p>
-                      <p>
-                        SCBD Lot 9 Jl. Jenderal Sudirman Kav. 52-53, RT.5/RW.3,
-                        Senayan
-                      </p>
-                    </div>
-                  </div>
-                  <img
-                    src="https://bitsofco.de/content/images/2018/12/broken-1.png"
-                    alt=""
-                    className="w-[9999px]"
-                  />
-                </div>
+                {data.map((datas) => (
+                  <>
+                    {datas.images.slice(0, 1).map((img) => (
+                      <div className="relative">
+                        <div className="absolute bottom-0 left-0 h-28 w-full z-30 bg-black/80">
+                          <div className="text-xs font-normal text-white mx-5 my-2">
+                            <p>{datas.name}</p>
+                            <p className="text-base font-medium">
+                              {datas.complex.complex_name}
+                            </p>
+                            <p>
+                              {datas.address}
+                            </p>
+                          </div>
+                        </div>
+                        <img
+                          src={`http://ec2-18-206-213-94.compute-1.amazonaws.com/api/building/image/${img.fileName}`}
+                          alt=""
+                          className="w-[9999px] h-full"
+                        />
+                      </div>
+                    ))}
+                  </>
+                ))}
               </div>
             </div>
           </main>
