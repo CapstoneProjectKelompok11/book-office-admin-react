@@ -48,8 +48,6 @@ const Dashboard = () => {
   };
 
   const handleOrder = (id) => {
-    // e.preventDefault();
-
     const SubmitData = {
       start_reservation: filtered[0].start_reservation,
       company: filtered[0].company,

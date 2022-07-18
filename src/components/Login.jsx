@@ -24,6 +24,7 @@ const Login = () => {
     message: "",
   });
 
+  //e target value buat inputan yg diisi
   const handleEmail = (e) => {
     const email = e.target.value;
     console.log("value", email);
@@ -37,6 +38,7 @@ const Login = () => {
     }
   };
 
+  //e target value buat inputan yg diisi
   const handlePassword = (e) => {
     const password = e.target.value;
     setPassword(password);

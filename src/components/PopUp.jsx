@@ -4,6 +4,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 export default function PopUp({ show, onClose, handleOrder, items }) {
   console.log("items", items[0].id)
 
+  // [0] untuk ngambil array ke 0
   const getId = {reservationId: items[0].id, floorId: items[0].floor.id}
   console.log("getid", getId)
 
@@ -27,7 +28,6 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                     ></button>
                   </div>
                   {/*body*/}
-                  {/* <form onSubmit={() => {handleOrder(getId)}}> */}
                   <div className="w-[550px] mx-auto">
                     <div>
                       <p className="text-center text-xl font-medium">
