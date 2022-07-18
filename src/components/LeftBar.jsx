@@ -1,9 +1,24 @@
 import React from "react";
 import logo from "../assets/logo.png";
-import user from "../assets/user.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+
+
 
 const LeftBar = () => {
+
+  const navigate = useNavigate()
+  const logout = () => {
+    navigate("/")
+  }
+
+  const deleteCookies = () => {
+    Cookies.remove("token", { path: "/"})
+
+  }
+
+  
   return (
     <div className="max-h-screen z-50">
       <aside className="w-80 fixed left-0 top-0 bg-white drop-shadow-lg ">
@@ -167,11 +182,12 @@ const LeftBar = () => {
                     </a>
                   </Link>
                 </li>
-                <li>
+                <li onClick = {()=>{logout(); deleteCookies()}}>
                   <Link to="">
                     <a
                       href="#"
                       className="hover:bg-blue-800 focus:ring-4 focus:ring-blue-500 flex mt-3 items-center px-6 py-4 text-base font-normal rounded-lg text-white bg-[#565656]"
+                      
                     >
                       <svg
                         width="24"
@@ -192,6 +208,7 @@ const LeftBar = () => {
                       <span className="ml-3 custom-text-maroon font-semibold">
                         Logout
                       </span>
+                      
                     </a>
                   </Link>
                 </li>

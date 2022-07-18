@@ -81,7 +81,6 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                           id=""
                           className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
                           value={items[0].start_reservation}
-                          // onChange={handleInput}
                         />
                       </div>
                       <div>
@@ -108,7 +107,6 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                         id=""
                         className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
                         value={items[0].company}
-                        //   onChange={handleInput}
                       />
                     </div>
                     <div>
@@ -119,7 +117,6 @@ export default function PopUp({ show, onClose, handleOrder, items }) {
                         id=""
                         className="w-full border-2 p-1 rounded-md text-black bg-white border-black"
                         value={items[0].phone}
-                        // onChange={handleInput}
                       />
                     </div>
                   
