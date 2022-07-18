@@ -36,6 +36,8 @@ const Dashboard = () => {
   // })
 
   const [selectOrder, setSelectOrder] = useState();
+  
+  //memfilter data yang akan diorder
   const filtered = data.filter((session) => {
     return session.id === selectOrder;
   });
@@ -47,6 +49,7 @@ const Dashboard = () => {
     console.log("id", id);
   };
 
+  //setelah di filter diambil data array ke 0
   const handleOrder = (id) => {
     const SubmitData = {
       start_reservation: filtered[0].start_reservation,
