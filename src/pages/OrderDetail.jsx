@@ -76,7 +76,7 @@ const OrderDetail = () => {
                     />
                   </svg>
                 </span>
-                <p>Pending Order</p>
+                <p>Order Details</p>
               </div>
             </div>
           </div>
