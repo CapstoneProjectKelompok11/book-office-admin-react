@@ -75,9 +75,20 @@ const OrderDetail = () => {
       });
   };
 
-  function handleDelete(e) {
-    e.preventDefault();
-  }
+  const handleCancel = (id) => {
+    axios
+      .put(
+        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=${id}&status=CANCELED`,
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get("token")}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("res", res);
+      });
+  };
 
   return (
     <div>
@@ -231,7 +242,7 @@ const OrderDetail = () => {
                         <button
                           type="button"
                           class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                          onClick={handleDelete}
+                          onClick={() => {handleCancel(admin.id)}}
                         >
                           Cancel
                         </button>

@@ -2,6 +2,7 @@ import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import LeftBar from "../components/LeftBar";
@@ -16,10 +17,9 @@ const Dashboard = () => {
       .get(
         "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation",
         {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0Mjk5MywiZXhwIjoxNjU4MTI5MzkzfQ.ulncMqzo1lLA39swiH8ut0-BjQOr9nQhsDXsJBGlpck",
-          },
+          headers : {
+            'Authorization': `Bearer ${Cookies.get('token')}`
+          }
         }
       )
       .then((res) => {
@@ -35,10 +35,9 @@ const Dashboard = () => {
   useEffect(() => {
     axios
       .get("http://ec2-18-206-213-94.compute-1.amazonaws.com/api/buildings", {
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0MzM2NCwiZXhwIjoxNjU4MTI5NzY0fQ.V6u6OigZ6l7Kqy58ihUjryamiWPXnGD60IauB8kkygg",
-        },
+        headers : {
+          'Authorization': `Bearer ${Cookies.get('token')}`
+        }
       })
       .then((res) => {
         setDatam(res.data.data);
@@ -323,7 +322,7 @@ const Dashboard = () => {
           </main>
         </div>
       </div>
-    </div>
+        </div>
   );
 };
 
