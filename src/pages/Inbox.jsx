@@ -1,23 +1,24 @@
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
-import axios from "axios";
+import axiosInstance from "../networks/api";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import LeftBar from "../components/LeftBar";
+import Cookies from "js-cookie";
+
 
 const Inbox = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation",
+        "/admin/reservation",
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1Nzk0ODkwNywiZXhwIjoxNjU4MDM1MzA3fQ.6tDl3XGuiS_QQafYKIy1DcYq-9hhubGqrwB3-4wnWOk",
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
         }
       )

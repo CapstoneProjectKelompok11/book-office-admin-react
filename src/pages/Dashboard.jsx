@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
-import axios from "axios";
+import axiosInstance from "../networks/api";
 import { Link } from "react-router-dom";
 import PopUp from "../components/PopUp";
 import Cookies from "js-cookie";
@@ -14,9 +14,9 @@ const Dashboard = () => {
   const [isPopUpShow, setIsPopUpShow] = useState(false);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation/pending",
+        "/admin/reservation/pending",
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`,
@@ -60,9 +60,9 @@ const Dashboard = () => {
       note: filtered[0].note,
     };
 
-    axios
+    axiosInstance
       .post(
-        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=${id.reservationId}&floorId=${id.floorId}`,
+        `/admin/reservation?reservationId=${id.reservationId}&floorId=${id.floorId}`,
         SubmitData,
         {
           headers: {
@@ -77,9 +77,9 @@ const Dashboard = () => {
   };
 
   const handleCancel = (id) => {
-    axios
+    axiosInstance
       .put(
-        `http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/reservation?reservationId=${id}&status=CANCELED`,
+        `/admin/reservation?reservationId=${id}&status=CANCELED`,
         {
           headers: {
             Authorization: `Bearer ${Cookies.get("token")}`,

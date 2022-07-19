@@ -1,23 +1,23 @@
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 import building from "../assets/building.png";
-import axios from "axios";
+import axiosInstance from "../networks/api";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import LeftBar from "../components/LeftBar";
+import Cookies from "js-cookie";
 
 const ManageReview = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState([]);
 
   useEffect(() => {
-    axios
+    axiosInstance
       .get(
-        "http://ec2-18-206-213-94.compute-1.amazonaws.com/api/admin/review",
+        "/admin/review",
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6W3siaWQiOjIsIm5hbWUiOiJST0xFX0FETUlOIn1dLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlhdCI6MTY1ODA0MzM2NCwiZXhwIjoxNjU4MTI5NzY0fQ.V6u6OigZ6l7Kqy58ihUjryamiWPXnGD60IauB8kkygg",
+            Authorization: `Bearer ${Cookies.get("token")}`,
           },
         }
       )
